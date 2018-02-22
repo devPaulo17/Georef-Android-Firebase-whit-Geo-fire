@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference("couries");
 
         GeoFire geoFire =  new  GeoFire (mDatabase);
-
-        /*geoFire.setLocation("firebase-hq1", new GeoLocation(4.658364, -74.112735), new GeoFire.CompletionListener() {
+    
+        //Insert Coordenades in firebase
+        geoFire.setLocation("firebase-hq1", new GeoLocation(4.658364, -74.112735), new GeoFire.CompletionListener() {
             @Override
             public void onComplete(String key, DatabaseError error) {
                 if (error != null) {
@@ -40,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-        });*/
-
+        });
+        
+        // Get places near at current location
         GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(4.6597068, -74.1180139), 3);
 
         geoQuery.addGeoQueryDataEventListener(new GeoQueryDataEventListener() {
